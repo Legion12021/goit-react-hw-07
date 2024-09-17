@@ -1,27 +1,33 @@
-.capitalForm1 {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.capitalForm2 {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-label {
-  width: 250px;
-}
-
-.tagForm {
+.formWrapper {
   border: 1px solid black;
-  border-radius: 3px;
-  width: 253px;
-  padding: 13px;
-  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 36px;
+  max-width: 400px;
+  margin-bottom: 24px;
 }
-
-.btnAdd {
-  margin-left: 87px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+.label {
+  font-size: 18px;
+  font-weight: 500;
+}
+.input {
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  outline: none;
+}
+.message {
+  font-size: 18px;
+  color: red;
+}
+.addContactBtn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid grey;
 }

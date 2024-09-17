@@ -1,20 +1,30 @@
-import React from "react";
-import { Field } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+
+import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
+
 import css from "./SearchBox.module.css";
 
-function SearchBox({ value, setFilter }) {
+function SearchBox() {
+  const dispatch = useDispatch();
+  const filterValue = useSelector(selectNameFilter);
+
+  const handleFilter = (event) => {
+    const value = event.target.value;
+    dispatch(changeFilter(value));
+  };
+
   return (
-    <div>
-      <label className={css.labelSearch}>
-        <span>Find contacts by name</span>
-        <input
-          className={css.inputSearch}
-          type="text"
-          value={value}
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </label>
-    </div>
+    <label className={css.searchWrapper}>
+      <span className={css.label}>Find contacts by name</span>
+      <input
+        className={css.searchBar}
+        type="text"
+        name="searchBar"
+        placeholder="type..."
+        value={filterValue}
+        onChange={handleFilter}
+      />
+    </label>
   );
 }
 

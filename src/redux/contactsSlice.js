@@ -1,27 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const INITIAL_STATE = {
-  contacts: {
-    items: [],
+const INITIAL_CONTACT_STATE = {
+  directory: {
+    entries: [],
   },
 };
 
-const contactsSlice = createSlice({
-  name: "contacts",
-  initialState: INITIAL_STATE,
+const contactManagerSlice = createSlice({
+  name: "contactManager",
+  initialState: INITIAL_CONTACT_STATE,
   reducers: {
-    addContacts: (state, action) => {
-      state.contacts.items.push(action.payload);
+    saveContact: (state, action) => {
+      state.directory.entries.push(action.payload);
     },
-    deleteContacts: (state, action) => {
-      state.contacts.items = state.contacts.items.filter(
-        (item) => item.id !== action.payload
+    removeContact: (state, action) => {
+      state.directory.entries = state.directory.entries.filter(
+        (entry) => entry.id !== action.payload
       );
     },
   },
 });
 
-export const { addContacts, deleteContacts } = contactsSlice.actions;
-export const selectContacts = (state) => state.contacts.contacts.items;
+export const { saveContact, removeContact } = contactManagerSlice.actions;
+export const getAllContacts = (state) => state.contactManager.directory.entries;
 
-export const contactsReducer = contactsSlice.reducer;
+export const contactManagerReducer = contactManagerSlice.reducer;

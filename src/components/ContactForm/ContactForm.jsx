@@ -1,82 +1,54 @@
-import {
-  Formik,
-  Form as ContactForm,
-  Field as InputField,
-  ErrorMessage as ErrorText,
-} from "formik";
-import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
+import { useId } from "react";
+import { nanoid } from "nanoid";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
-import { saveContact } from "../../redux/contactsSlice";
-import styles from "./ContactForm.module.css";
+import style from "./ContactForm.module.css";
 
-const NewContactForm = () => {
-  const triggerDispatch = useDispatch();
-  const formDefaults = {
-    contactName: "",
-    contactNumber: "",
+export default function ContactForm() {
+  const dispatch = useDispatch();
+
+  const nameId = useId();
+  const numberId = useId();
+
+  const handleSubmit = (values, actions) => {
+    actions.resetForm();
+    values.id = nanoid();
+    const action = addContact(values);
+    dispatch(action);
   };
-
-  const validationSchema = Yup.object().shape({
-    contactName: Yup.string()
-      .min(3, "Name is too short!")
-      .max(50, "Name is too long!")
-      .required("Name is required"),
-    contactNumber: Yup.string()
-      .min(3, "Number is too short!")
-      .max(50, "Number is too long!")
-      .required("Number is required"),
-  });
-
-  const processSubmit = (data, formActions) => {
-    const createdContact = { ...data, id: nanoid() };
-    triggerDispatch(saveContact(createdContact));
-
-    formActions.resetForm();
-  };
-
   return (
     <Formik
-      initialValues={formDefaults}
-      onSubmit={processSubmit}
-      validationSchema={validationSchema}
+      initialValues={{ name: "", number: "" }}
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .min(3, "Too Short!")
+          .max(50, "Too Long!")
+          .required("Required"),
+        number: Yup.string()
+          .matches(/[0-9]{3}-[0-9]{2}-[0-9]{2}/, {
+            message: "Number format: XXX-XX-XX",
+            excludeEmptyString: false,
+          })
+          .required("Required"),
+      })}
+      onSubmit={handleSubmit}
     >
-      <ContactForm className={styles.formContainer}>
-        <label className={styles.fieldGroup}>
-          <span className={styles.fieldLabel}>Full Name</span>
-          <InputField
-            className={styles.textInput}
-            type="text"
-            name="contactName"
-          />
-          <ErrorText
-            className={styles.errorText}
-            name="contactName"
-            component="span"
-          />
-        </label>
+      <Form className={style.form}>
+        <label htmlFor={nameId}>Name</label>
+        <Field type="text" id={nameId} name="name" />
+        <ErrorMessage className={style.error} name="name" component="span" />
 
-        <label className={styles.fieldGroup}>
-          <span className={styles.fieldLabel}>Phone Number</span>
-          <InputField
-            className={styles.textInput}
-            type="tel"
-            name="contactNumber"
-          />
-          <ErrorText
-            className={styles.errorText}
-            name="contactNumber"
-            component="span"
-          />
-        </label>
+        <label htmlFor={numberId}>Number</label>
+        <Field type="text" id={numberId} name="number" />
+        <ErrorMessage name="number" component="span" className={style.error} />
 
-        <button className={styles.submitButton} type="submit">
-          Save Contact
+        <button className={style.btn} type="submit">
+          Add Contact
         </button>
-      </ContactForm>
+      </Form>
     </Formik>
   );
-};
-
-export default ContactForm;
+}

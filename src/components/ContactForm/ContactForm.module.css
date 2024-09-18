@@ -1,33 +1,28 @@
-.formWrapper {
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 36px;
-  max-width: 400px;
-  margin-bottom: 24px;
-}
-.wrapper {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #0b85cd;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 400px;
 }
-.label {
-  font-size: 18px;
-  font-weight: 500;
-}
-.input {
-  padding: 12px;
-  font-size: 18px;
-  border: 1px solid gray;
+
+.btn {
   border-radius: 8px;
-  outline: none;
+  border: 2px solid rgb(26, 106, 120);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  width: 145px;
+  height: 50px;
 }
-.message {
-  font-size: 18px;
+
+.error {
+  font-size: 12px;
   color: red;
-}
-.addContactBtn {
-  display: block;
-  margin: 0 auto;
-  border: 1px solid grey;
 }

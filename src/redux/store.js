@@ -1,4 +1,4 @@
-iimport {
+import {
     persistStore,
     persistReducer,
     FLUSH,

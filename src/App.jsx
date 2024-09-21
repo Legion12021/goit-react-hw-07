@@ -1,18 +1,16 @@
 import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox";
 import ContactList from "./components/ContactList/ContactList";
-import { FaAddressBook } from "react-icons/fa6";
-import style from "../src/App.css";
+import SearchBox from "./components/SearchBox/SearchBox";
 
-export default function App() {
+function App() {
   return (
     <div>
-      <h1 className={style.title}>
-        Phonebook <FaAddressBook className={style.icon} />
-      </h1>
+      <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       <ContactList />
     </div>
   );
 }
+
+export default App;

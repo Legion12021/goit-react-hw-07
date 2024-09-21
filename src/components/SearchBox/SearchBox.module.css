@@ -1,13 +1,8 @@
-.wrapper {
+.labelSearch {
   display: flex;
   flex-direction: column;
 }
 
-.nameInput {
-  margin: 0;
-}
-
-.searchInput {
-  max-width: 400px;
-  padding-left: 10px;
+.inputSearch {
+  width: 272px;
 }

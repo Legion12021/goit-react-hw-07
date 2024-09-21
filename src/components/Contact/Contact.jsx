@@ -1,11 +1,10 @@
-import { FaUser, FaPhoneAlt } from "react-icons/fa"; // Використовуйте одну версію для іконок
+import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import css from "./Contact.module.css";
-import { useDispatch } from 'react-redux';
-import { deleteContacts } from '../../redux/operations';
-
+import { useDispatch } from "react-redux";
+import { deleteContacts } from "../../redux/operations";
 
 const Contact = ({ name, number, id }) => {
-  const dispatch = useDispatch(); // Ініціалізація dispatch
+  const dispatch = useDispatch();
 
   return (
     <li>
@@ -27,6 +26,6 @@ const Contact = ({ name, number, id }) => {
       </div>
     </li>
   );
-}
+};
 
 export default Contact;

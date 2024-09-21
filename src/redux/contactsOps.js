@@ -4,7 +4,7 @@ import axios from "axios";
 axios.defaults.baseURL = "https://66ef039f3ed5bb4d0bf2974a.mockapi.io/";
 
 export const fetchContacts = createAsyncThunk(
-  "contacts/fetchAll", // Унікальний рядок, що ідентифікує цю дію
+  "contacts/fetchAll",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/contacts");

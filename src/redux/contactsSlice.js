@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
-import { fetchContacts, addContacts, deleteContacts } from "./operations";
+import { fetchContacts, addContacts, deleteContacts } from "./contactsOps";
 
 const getActions = (type) =>
   isAnyOf(fetchContacts[type], addContacts[type], deleteContacts[type]);

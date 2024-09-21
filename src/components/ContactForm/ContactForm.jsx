@@ -1,10 +1,10 @@
-import styles from './ContactForm.module.css';
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
-import { addContacts } from '../../redux/operations';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import styles from "./ContactForm.module.css";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectContacts } from "../../redux/selectors";
+import { addContacts } from "../../redux/contactsOps";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,7 +27,8 @@ const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const isInContacts = contacts.some(
-      contact => contact.name.toLowerCase().trim() === values.name.toLowerCase().trim()
+      (contact) =>
+        contact.name.toLowerCase().trim() === values.name.toLowerCase().trim()
     );
 
     if (isInContacts) {
@@ -41,7 +42,7 @@ const ContactForm = () => {
 
   return (
     <Formik
-      initialValues={{ name: '', number: '' }}
+      initialValues={{ name: "", number: "" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
@@ -49,21 +50,13 @@ const ContactForm = () => {
         <Form className={styles.form}>
           <label>
             Name
-            <Field
-              type="text"
-              name="name"
-              className={styles.inputField}
-            />
+            <Field type="text" name="name" className={styles.inputField} />
             <ErrorMessage name="name" component="div" />
           </label>
 
           <label>
             Number
-            <Field
-              type="tel"
-              name="number"
-              className={styles.inputField}
-            />
+            <Field type="tel" name="number" className={styles.inputField} />
             <ErrorMessage name="number" component="div" />
           </label>
 

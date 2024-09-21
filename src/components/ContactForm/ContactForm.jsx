@@ -1,9 +1,9 @@
-import styles from './ContactForm.module.css';
-import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactSlice';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import styles from "./ContactForm.module.css";
+import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 // Схема валідації
 const validationSchema = Yup.object().shape({
@@ -36,7 +36,7 @@ const ContactForm = () => {
 
   return (
     <Formik
-      initialValues={{ name: '', number: '' }}
+      initialValues={{ name: "", number: "" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >

@@ -1,45 +1,22 @@
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 320px;
-}
-
-.list {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  gap: 20px;
-}
-
-.item {
+.boxUsername {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
+  margin-bottom: -20px;
 }
 
-.btn {
-  border-radius: 8px;
-  border: 2px solid rgb(26, 106, 120);
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-
-  width: 145px;
-  height: 50px;
-
-  margin-left: 30px;
-}
-
-.name,
-.number {
+.boxPhone {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
-  margin: 0;
+  gap: 7px;
+}
+
+.divPerson {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 223px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

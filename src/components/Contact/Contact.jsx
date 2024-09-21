@@ -1,30 +1,31 @@
-import { FaUser } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
+import { FaUser, FaPhoneAlt } from "react-icons/fa"; // Використовуйте одну версію для іконок
+import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
-import style from "./Contact.module.css";
+import { deleteContact } from "../../redux/contactSlice";
 
-export default function Contact({ id, name, number }) {
-  const dispatch = useDispatch();
+const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch(); // Ініціалізація dispatch
+
   return (
-    <div className={style.container}>
-      <ul className={style.list}>
-        <li className={style.item}>
-          <FaUser />
-          <p className={style.name}>{name}</p>
-        </li>
-        <li className={style.item}>
-          <FaPhone />
-          <p className={style.number}>{number}</p>
-        </li>
-      </ul>
-      <button
-        className={style.btn}
-        type="button"
-        onClick={() => dispatch(deleteContact(id))}
-      >
-        Delete
-      </button>
-    </div>
+    <li>
+      <div className={css.divPerson}>
+        <div>
+          <div className={css.boxUsername}>
+            <FaUser size="20" />
+            <p>{name}</p>
+          </div>
+          <div className={css.boxPhone}>
+            <FaPhoneAlt size="20" />
+            <p>{number}</p>
+          </div>
+        </div>
+
+        <button type="button" onClick={() => dispatch(deleteContact(id))}>
+          Delete
+        </button>
+      </div>
+    </li>
   );
-}
+};
+
+export default Contact;

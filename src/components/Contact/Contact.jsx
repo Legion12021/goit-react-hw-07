@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactSlice";
 
 const Contact = ({ name, number, id }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Ініціалізація dispatch
 
   return (
     <li>

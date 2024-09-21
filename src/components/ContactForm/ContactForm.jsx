@@ -31,7 +31,7 @@ const ContactForm = () => {
       number: values.number,
     };
     dispatch(addContact(newObj));
-    resetForm();
+    resetForm(); // Очищаємо форму після відправки
   };
 
   return (
